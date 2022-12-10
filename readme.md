@@ -4,11 +4,15 @@ This is a simple app to try and create a सुभाषितम् overlay.
 
 ## Installation
 
- npm install 
+```
+npm install 
+```
 
 OR 
 
- yarn install
+```
+yarn install
+```
 
 ## Dependencies
 
