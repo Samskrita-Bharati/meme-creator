@@ -1,0 +1,61 @@
+
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta header="Content-type: text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>सुभाषितम्</title><link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dbmataac4/image/upload/w_50,h_50,c_pad/subhashitaani/logo.png"><link rel="stylesheet" href="/stylesheets/skeleton.css"><script type="text/javascript" src="/javascripts/script.js">  </script></head><body><script src="https://media-editor.cloudinary.com/all.js"></script><div style="float:left;margin-top: 5px;margin-right: 100px"><img src="https://res.cloudinary.com/dbmataac4/image/upload/f_auto,q_auto/subhashitaani/logo.png" width="243" height="57" alt="logo"></div><div style="margin-top: 5px;"><h1>सुभाषितम्</h1></div><hr><div class="container"><div class="row"><div class="twelve columns">                      <h2>Generate Card with the power of AI!</h2><p>Create your own personalized सुभाषितम् card to share with friends and family in 4 easy steps: </p><ol>            <li>Click <i>Generate Image</i> to create a background based on the SubhashitaM.</li><li>Click <i>Create Card</i> to see different designs.</li><li>Copy the link or download the design that you like.</li><li>Share!            </li></ol></div></div><div class="row"><div class="twelve columns">                      <button name="Generate" id="generate">Generate Image</button></div></div><div class="row"><div class="twelve columns"><h4>Today's सुभाषितम्</h4><div id="quote"></div></div></div><div class="row"><h4>सरलम् अर्थम् / Simple Meaning</h4><div class="twelve columns"><div id="meaning"></div></div></div><div class="row"><div class="twelve columns"><div id="image"></div></div></div><div class="row"><div class="twelve columns">                      <button name="Create" id="create">Create Card</button></div></div><div class="row" id="preview" style="display:none"><div class="three columns" id="preview0">           </div><div class="three columns" id="preview1">           </div><div class="three columns" id="preview2"></div><div class="three columns" id="preview3"></div></div><div class="row" id="links" style="display:none"> </div><div class="row"><div class="twelve columns"><p id="result"></p></div></div><script type="text/javascript">var keywords = null 
+    var imageUrl = null
+    function loadData(){
+        //fetch('./data/data.json')
+        fetch('./data/q.json')
+        .then(resp => {
+            if (!resp.ok) {
+               throw new Error(`HTTP error, status = ${response.status}`);
+            }
+            return resp.json()})
+        .then(data => {
+            // print quote
+            // first generate a random number and then pick a quote
+            const index = Math.floor(Math.random() * data.quotes.length);                        
+            const q = document.getElementById('quote')
+            q.innerHTML = data.quotes[index].quote.replace('\| ','\|<br/>')
+            // print meaning
+            const m = document.getElementById('meaning')
+            m.textContent = data.quotes[index].meaning
+            // get a generated image
+            keywords = data.quotes[index].keywords || 'background image'
+        })
+    }
+    loadData()
+    
+    document.getElementById('generate').addEventListener("click", function() {
+        getImage(keywords)
+    })
+    
+    function getImage(textPrompt){
+    
+        // first load a wait image
+        const img = document.createElement('img')
+        img.src='https://res.cloudinary.com/dbmataac4/image/upload/f_auto,q_auto,w_550/wait.gif'
+        img.width=550
+        img.height=550
+        const div = document.getElementById('image')
+        div.appendChild(img)
+    
+        //https://res.cloudinary.com/dbmataac4/image/upload/v1673292441/wait.gif
+        const url = `./getImage?keyword=${textPrompt}`
+        
+        fetch(
+            url            
+        )
+        .then(resp => {
+            if(!resp.ok) {
+            throw new Error(`HTTP error, status = ${response.status}`);
+            }
+            return resp.json()
+        })
+        .then(data => {
+            imageUrl = data[0].url || 'sample'                
+            img.src = imageUrl                
+        })
+        }
+    
+    document.getElementById('create').addEventListener("click", function() {
+        generateImageOverlay(imageUrl)
+    })</script></div></body></html>

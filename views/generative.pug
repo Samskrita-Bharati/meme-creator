@@ -10,13 +10,13 @@ block content
   div(class="container")
     div(class="row")
       div(class="twelve columns")                       
-        p Welcome to site. Here, you can create your own सुभाषितम् to share with friends and family in 3 easy steps: 
+        h2 Generate Card with the power of AI!
+        p Create your own personalized सुभाषितम् card to share with friends and family in 4 easy steps: 
         ol             
-          li Select the layout
-          li Choose font and align text
-          li SHARE!
-        p That's it! We'll create a shareable सुभाषितम् that you can use as a greeting or a meme for forwarding.
-    
+          li Click <i>Generate Image</i> to create a background based on the SubhashitaM.
+          li Click <i>Create Card</i> to see different designs.
+          li Copy the link or download the design that you like.
+          li Share!            
 
     div(class="row")
         div(class="twelve columns")                       
@@ -24,10 +24,10 @@ block content
     
     div(class="row")
         div(class="twelve columns")
-          <h3>SubhashitaM</h3>
+          h4 Today's सुभाषितम्
           div(id='quote')
     div(class="row")
-        <h3>Sahaja ArthaM</h3>
+        h4 सरलम् अर्थम् / Simple Meaning
         div(class="twelve columns")
           div(id='meaning')
     div(class="row")
@@ -63,13 +63,15 @@ block content
                 return resp.json()})
             .then(data => {
                 // print quote
+                // first generate a random number and then pick a quote
+                const index = Math.floor(Math.random() * data.quotes.length);                        
                 const q = document.getElementById('quote')
-                q.innerHTML = data.quotes[0].quote.replace('\| ','\|<br/>')
+                q.innerHTML = data.quotes[index].quote.replace('\| ','\|<br/>')
                 // print meaning
                 const m = document.getElementById('meaning')
-                m.textContent = data.quotes[0].meaning
+                m.textContent = data.quotes[index].meaning
                 // get a generated image
-                keywords = data.quotes[0].keywords                
+                keywords = data.quotes[index].keywords || 'background image'
             })
         }
         loadData()
@@ -79,6 +81,16 @@ block content
         })
 
         function getImage(textPrompt){
+
+            // first load a wait image
+            const img = document.createElement('img')
+            img.src='https://res.cloudinary.com/dbmataac4/image/upload/f_auto,q_auto,w_550/wait.gif'
+            img.width=550
+            img.height=550
+            const div = document.getElementById('image')
+            div.appendChild(img)
+
+            //https://res.cloudinary.com/dbmataac4/image/upload/v1673292441/wait.gif
             const url = `./getImage?keyword=${textPrompt}`
             
             fetch(
@@ -91,11 +103,8 @@ block content
                 return resp.json()
             })
             .then(data => {
-                imageUrl = data[0].url || 'sample'
-                const img = document.createElement('img')
-                img.src = imageUrl
-                const div = document.getElementById('image')
-                div.appendChild(img)
+                imageUrl = data[0].url || 'sample'                
+                img.src = imageUrl                
             })
             }
         
