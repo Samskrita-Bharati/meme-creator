@@ -17,6 +17,10 @@ router.get('/generative', function (req, res, next) {
   res.render('generative', { title: 'सुभाषितम्' })
 })
 
+router.get('/about', function (req, res, next) {
+  res.render('about', { title: 'सुभाषितम्' })
+})
+
 router.get('/getImage', function(req, res, next){
   const keyword = req.query.keyword || 'sunrise'
   

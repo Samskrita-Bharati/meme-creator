@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  script(src="https://media-editor.cloudinary.com/all.js")
+  div(style="float:left;margin-top: 5px;margin-right: 100px")
+    img(src="https://res.cloudinary.com/dbmataac4/image/upload/f_auto,q_auto/subhashitaani/logo.png" width="243" height="57" alt="logo")          
+  div(style="margin-top: 5px;")
+    h1= title
+  ul(class='nav-links')    
+    a(href="./") Daily Subhashitam
+    a(href="./edit") Edit your Subhashitam
+    a(href="./generative") Subhashitam with AI
+    a(href="./about") About & Contact Us
+  div(class="burger")
+    div(class="line")
+    div(class="line2")
+    div(class="line3")      
+  hr
+  div(class="container")
+    div(class="row")
+      div(class="twelve columns") 
+      h2 Subhshitam Website 
+      p The purpose of this application is to help you create a e-card or a meme for your social media site but with a Samskrutam twist. The idea is for you to select a quote and then apply some background to generate the meme e-card.
+      p This application was created as part the Code for Samskrutam hackathon project by <a href="https://github.com/akshayranganath">Akshay Ranganath</a>.
