@@ -24,7 +24,7 @@ router.get('/about', function (req, res, next) {
 router.get('/getImage', function(req, res, next){
   const keyword = req.query.keyword || 'sunrise'
   
-  const url = `https://hi.final-tou.ch/_/generate/greeting?scene=12&superlative=${keyword}&artifacts=&batch_size=1&style=3d,%20octane%20render,%20depth%20of%20field,%20unreal%20engine%205,%20concept%20art%20of%20a%20(({})),%20vibrant%20colors,%20glow,%20trending%20on%20artstation,%20ultra%20high%20detail,%20ultra%20realistic,%20cinematic%20lighting,%20focused,%2012k`
+  const url = `https://hi.final-tou.ch/_/generate/greeting?superlative=${keyword}&artifacts=&batch_size=1&style=a%20digital%20painting%20of%20(({}))%20on%20a%20navy%20blue%20sunset%20dark%20abstract%20dark%20background`  
   fetch(url)
   .then(resp => {
     if(!resp.ok) {

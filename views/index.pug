@@ -41,26 +41,15 @@ block content
           h4 Choose a background
       div(class="row" id="images")
         div(class="three columns")
-          img(class="background" src="https://res.cloudinary.com/dbmataac4/image/upload/t_select,f_auto,q_auto/subhashitaani/pexels-photo-3560168.jpg", width="250", height="250" onclick="setImage('subhashitaani/pexels-photo-3560168.jpg', this)")
+          img(class="background" src="https://res.cloudinary.com/dbmataac4/image/upload/t_select,f_auto,q_auto/subhashitaani/milky-way-gbc68b4de9_1280", width="250", height="250" onclick="setImage('subhashitaani/milky-way-gbc68b4de9_1280.jpg', this)")
         div(class="three columns")
-          img(class="background"  src="https://res.cloudinary.com/dbmataac4/image/upload/t_select,f_auto,q_auto/subhashitaani/pexels-photo-3394939.jpg", width="250", height="250" onclick="setImage('subhashitaani/pexels-photo-3394939.jpg', this)")
+          img(class="background"  src="https://res.cloudinary.com/dbmataac4/image/upload/t_select,f_auto,q_auto/subhashitaani/astronomy-gc9f44d95c_1280", width="250", height="250" onclick="setImage('subhashitaani/astronomy-gc9f44d95c_1280.jpg', this)")
         div(class="three columns")
-          img(class="background"  src="https://res.cloudinary.com/dbmataac4/image/upload/t_select,f_auto,q_auto/subhashitaani/pexels-photo-2748716.jpg", width="250", height="250" onclick="setImage('subhashitaani/pexels-photo-2748716.jpg', this)")
+          img(class="background"  src="https://res.cloudinary.com/dbmataac4/image/upload/t_select,f_auto,q_auto/subhashitaani/starfield-gb18775787_1280", width="250", height="250" onclick="setImage('subhashitaani/starfield-gb18775787_1280.jpg', this)")
         div(class="three columns")
-          img(class="background" src="https://res.cloudinary.com/dbmataac4/image/upload/t_select,f_auto,q_auto/subhashitaani/sky-space-dark-galaxy.jpg", width="250", height="250" onclick="setImage('subhashitaani/sky-space-dark-galaxy.jpg', this)")
+          img(class="background" src="https://res.cloudinary.com/dbmataac4/image/upload/t_select,f_auto,q_auto/subhashitaani/sky-space-dark-galaxy", width="250", height="250" onclick="setImage('subhashitaani/sky-space-dark-galaxy.jpg', this)")
 
-      div(class="row")
-        div(class="twelve columns")                       
-          h4 Choose a theme 
-      div(class="row")
-        div(class="three columns")
-          label Black
-        div(class="three columns")
-          label Yellow
-        div(class="three columns")
-          label Green
-        div(class="three columns")
-          label Blue
+      
       div(class="row")
         div(class="twelve columns")
           p(class="subhashitam")
@@ -94,6 +83,7 @@ block content
       publicId =  selectedPublicId
       element.style="border:5px groove gold;"
     }
+
     document.getElementById('generate').addEventListener("click", function() {      
       generateImageOverlay(publicId, quote.quote)
     })
